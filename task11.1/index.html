@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="style.css" rel="stylesheet">
+	<title>Document</title>
+</head>
+
+<body>
+
+	<main class="main">
+		<div class="container-form form-registration">
+			<div class="message"></div>
+			<h1>Create accaunt</h1>
+			<form class="form" name="formReg">
+				<input name="createEmail" type="text" placeholder="Email">
+				<!-- <span>Email</span> -->
+				<input name="createName" type="text" placeholder="Username">
+				<input name="createPassword" type="password" placeholder="Password">
+				<input name="confirmPassword" type="password" placeholder="Confirm password">
+				<button>Sign up</button>
+				<div class="account">
+					<p>Already have an account?<span class="link-login">Login here</span> </p>
+				</div>
+			</form>
+			<div class="error"></div>
+
+		</div>
+		<div class="container-form form-login none">
+			<div class="message"></div>
+			<h1>Login</h1>
+			<form class="form" name="formLog">
+				<input name="enterEmail" type="text" placeholder="Email">
+				<input name="enterPassword" type="password" placeholder="Password">
+				<button>Sign in</button>
+				<div class="account">
+					<p>Don't have an account? <span class="link-register">Sign up</span> </p>
+				</div>
+			</form>
+			<div class="error"></div>
+
+		</div>
+	</main>
+	<script src="./script.js"></script>
+</body>
+
+</html>
