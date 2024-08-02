@@ -9,6 +9,7 @@ const errorLog = document.querySelector(".form-login .error");
 const messageReg = document.querySelector(".form-registration .message");
 const messageLog = document.querySelector(".form-login .message");
 let array = [];
+
 let usersLocalStorage = JSON.parse(localStorage.getItem("users"));
 if (usersLocalStorage) {
   array = usersLocalStorage;
@@ -34,6 +35,7 @@ formReg.addEventListener("submit", (event) => {
       userEmail: createEmail.value,
       userName: createName.value,
       userPassword: createPassword.value,
+      userId: generateId(),
     };
     array.push(userDate);
     localStorage.setItem("users", JSON.stringify(array));
@@ -41,12 +43,19 @@ formReg.addEventListener("submit", (event) => {
   }
 });
 
+function generateId() {
+  const timeStamp = new Date().getTime().toString(16);
+  const randomNum = Math.random().toString(16).slice(2, 8);
+  return `${timeStamp}-${randomNum}`;
+}
+
 formLog.addEventListener("submit", (event) => {
   event.preventDefault();
   const checkDate = {
     userEmail: enterEmail.value,
     userPassword: enterPassword.value,
   };
+  console.log(checkDate);
   const checkDateStorage = JSON.parse(localStorage.getItem("users"));
   checkDateStorage.find((element) => {
     if (
@@ -55,13 +64,14 @@ formLog.addEventListener("submit", (event) => {
     ) {
       messageLog.textContent = "Successful authorization";
       errorLog.textContent = "";
+      window.location.href = "./auth.html";
       return true;
     }
-    if (element.userEmail !== checkDate.userEmail) {
-      errorLog.textContent = "User with this email does not exist";
-      messageLog.textContent = "";
-    } else if (element.userPassword !== checkDate.userPassword) {
-      errorLog.textContent = "Incorrect password";
+    if (
+      element.userEmail !== checkDate.userEmail ||
+      element.userPassword !== checkDate.userPassword
+    ) {
+      errorLog.textContent = "Values entered incorrectly";
       messageLog.textContent = "";
       return false;
     }
