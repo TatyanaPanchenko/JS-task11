@@ -65,6 +65,7 @@ formLog.addEventListener("submit", (event) => {
       messageLog.textContent = "Successful authorization";
       errorLog.textContent = "";
       window.location.href = "./auth.html";
+      localStorage.setItem("chooseUser", JSON.stringify(element));
       return true;
     }
     if (
