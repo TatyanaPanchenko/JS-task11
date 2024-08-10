@@ -55,14 +55,13 @@ formLog.addEventListener("submit", (event) => {
     userEmail: enterEmail.value,
     userPassword: enterPassword.value,
   };
-  console.log(checkDate);
   const checkDateStorage = JSON.parse(localStorage.getItem("users"));
   checkDateStorage.find((element) => {
     if (
       element.userEmail === checkDate.userEmail &&
       element.userPassword === checkDate.userPassword
     ) {
-      messageLog.textContent = "Successful authorization";
+      messageLog.textContent = "";
       errorLog.textContent = "";
       window.location.href = "./auth.html";
       localStorage.setItem("chooseUser", JSON.stringify(element));
